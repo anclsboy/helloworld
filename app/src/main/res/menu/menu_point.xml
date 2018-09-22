@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="example.tql.indi.helloworld.MainActivity">
+    tools:context="example.tql.indi.helloworld.pointCount">
+
     <item
-        android:id="@+id/pointCount"
+        android:id="@+id/tohello"
         android:orderInCategory="100"
-        android:title="@string/pc"
+        android:title="@string/app_name"
         app:showAsAction="never" />
 </menu>
