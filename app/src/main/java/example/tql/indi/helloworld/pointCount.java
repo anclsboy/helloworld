@@ -73,4 +73,24 @@ public class pointCount extends AppCompatActivity {
         pointA.setText("0");
         pointB.setText("0");
     }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String scoreA = ((TextView)findViewById(R.id.pointA)).getText().toString();
+        String scoreB = ((TextView)findViewById(R.id.pointB)).getText().toString();
+
+        outState.putString("scoreA", scoreA);
+        outState.putString("scoreB", scoreB);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        ((TextView)findViewById(R.id.pointA))
+                .setText(savedInstanceState.getString("scoreA"));
+        ((TextView)findViewById(R.id.pointB))
+                .setText(savedInstanceState.getString("scoreB"));
+    }
 }

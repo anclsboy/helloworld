@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="example.tql.indi.helloworld">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,9 +24,14 @@
         </activity>
         <activity
             android:name=".pointCount"
-            android:label="@string/pc">
-
-        </activity>
+            android:label="@string/pc" />
+        <activity
+            android:name=".BMI"
+            android:label="BMI" />
+        <activity
+            android:name=".exchange"
+            android:label="@string/title_activity_exchange" />
+        <activity android:name=".exchangeCfg"></activity>
     </application>
 
 </manifest>

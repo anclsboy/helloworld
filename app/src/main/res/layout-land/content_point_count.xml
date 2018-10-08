@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".pointCount"
+    tools:showIn="@layout/activity_point_count">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="358dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="317dp"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <TextView
+                    android:id="@+id/TeamNameA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/teamA"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/pointA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:duplicateParentState="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:linksClickable="false"
+                    android:longClickable="false"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="@android:color/black"
+                    android:textSize="36sp" />
+
+                <Button
+                    android:id="@+id/a3"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darkorangeplus"
+                    android:onClick="addPoint"
+                    android:text="+3 Points"
+                    android:textSize="14sp"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/a2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darkorangeplus"
+                    android:onClick="addPoint"
+                    android:text="+2 Points"
+                    android:textSize="14sp"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/a1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darkorangeplus"
+                    android:onClick="addPoint"
+                    android:text="free throw"
+                    android:textSize="14sp"
+                    android:typeface="monospace" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="0.4dp"
+                android:layout_height="200sp"
+                android:background="#686868" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <TextView
+                    android:id="@+id/TeamNameB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/teamB"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/pointB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:duplicateParentState="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:linksClickable="false"
+                    android:longClickable="false"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="@android:color/black"
+                    android:textSize="36sp" />
+
+                <Button
+                    android:id="@+id/b3"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darkorangeplus"
+                    android:onClick="addPoint"
+                    android:text="+3 Points"
+                    android:textSize="14sp"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/b2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darkorangeplus"
+                    android:onClick="addPoint"
+                    android:text="+2 Points"
+                    android:textSize="14sp"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/b1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darkorangeplus"
+                    android:onClick="addPoint"
+                    android:text="free throw"
+                    android:textSize="14sp"
+                    android:typeface="monospace" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="76dp"
+            android:layout_height="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="14dp"
+            android:background="@color/darkorangeplus"
+            android:onClick="clearPoint"
+            android:text="@string/reset" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

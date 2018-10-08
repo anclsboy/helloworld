@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".exchange"
+    tools:showIn="@layout/activity_exchange">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp">
+
+            <EditText
+                android:id="@+id/money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/exhint"
+                android:inputType="numberDecimal"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/euro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toEuro"
+                android:text="EURO" />
+
+            <Button
+                android:id="@+id/dollar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toDollar"
+                android:text="DOLLAR" />
+
+            <Button
+                android:id="@+id/won"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toWon"
+                android:text="WON" />
+
+            <Button
+                android:id="@+id/exJump"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="jump"
+                android:text="config" />
+
+            <TextView
+                android:id="@+id/exchanged"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

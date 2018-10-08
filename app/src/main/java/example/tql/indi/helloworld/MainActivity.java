@@ -66,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.pointCount) {
             Intent intent = new Intent(this, pointCount.class);
             startActivity(intent);
+        } else if (id == R.id.bmi) {
+            Intent intent = new Intent(this, BMI.class);
+            startActivity(intent);
+        } else if (id == R.id.exchange) {
+            Intent intent = new Intent(this, exchange.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

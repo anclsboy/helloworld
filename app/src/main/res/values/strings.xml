@@ -8,4 +8,10 @@
     <string name="teamA">Team A</string>
     <string name="teamB">Team B</string>
     <string name="reset">Reset</string>
+    <string name="height">身高</string>
+    <string name="bmi">BMI Calculator</string>
+    <string name="weight">体重</string>
+    <string name="bmiButton">计算当前BMI</string>
+    <string name="title_activity_exchange">Exchange</string>
+    <string name="exhint">请输入人民币</string>
 </resources>
