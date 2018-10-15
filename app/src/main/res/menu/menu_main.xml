@@ -19,4 +19,9 @@
         android:orderInCategory="100"
         android:title="@string/title_activity_exchange"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/exchangelist"
+        android:orderInCategory="100"
+        android:title="@string/exchangelist"
+        app:showAsAction="never" />
 </menu>

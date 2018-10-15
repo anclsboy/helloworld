@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -71,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (id == R.id.exchange) {
             Intent intent = new Intent(this, exchange.class);
+            startActivity(intent);
+        }else if (id == R.id.exchangelist) {
+
+            Intent intent = new Intent(this, exchangeList.class);
             startActivity(intent);
         }
 

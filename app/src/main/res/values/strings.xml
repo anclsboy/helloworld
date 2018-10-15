@@ -14,4 +14,5 @@
     <string name="bmiButton">计算当前BMI</string>
     <string name="title_activity_exchange">Exchange</string>
     <string name="exhint">请输入人民币</string>
+    <string name="exchangelist">Exchange List</string>
 </resources>
