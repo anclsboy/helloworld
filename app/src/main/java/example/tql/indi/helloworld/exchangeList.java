@@ -1,6 +1,8 @@
 package example.tql.indi.helloworld;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,9 +11,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,6 +48,7 @@ public class exchangeList extends ListActivity  {
         Thread thread = new Thread(et,"exchangelist");
         thread.start();
         createAdapter();
+        this.getListView().setOnItemLongClickListener(olclistener);
     }
 
     private void createAdapter() {
@@ -53,6 +59,27 @@ public class exchangeList extends ListActivity  {
         );
         setListAdapter(adapter);
     }
+
+    private OnItemLongClickListener olclistener = new OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view,final int i, long l) {
+            DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int j) {
+                    listItems.remove(i);
+                    adapter.notifyDataSetChanged();
+                    getListView().invalidate();
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(exchangeList.this);
+            builder.setTitle("Delete or Not");
+            builder.setMessage("Confirm?");
+            builder.setPositiveButton("yes",listener);
+            builder.setNegativeButton("No",null);
+            builder.show();
+            return true;
+        }
+    };
 
     class ExchangesThread extends Thread {
         @Override
@@ -84,6 +111,7 @@ public class exchangeList extends ListActivity  {
             }
         }
     }
+
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
