@@ -2,8 +2,14 @@ package example.tql.indi.helloworld;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,7 +31,10 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
+import java.util.TimeZone;
 
 public class exchangeList extends ListActivity  {
 
@@ -45,8 +54,29 @@ public class exchangeList extends ListActivity  {
         super.onCreate(savedInstanceState);
         ExchangesThread et = new ExchangesThread();
         listItems = new ArrayList<HashMap<String, String>>();
-        Thread thread = new Thread(et,"exchangelist");
-        thread.start();
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+        SharedPreferences sp = getSharedPreferences("exchangelist", MODE_PRIVATE);
+        SharedPreferences.Editor editor = getSharedPreferences("exchangelist",MODE_PRIVATE).edit();
+        String today = String.valueOf(cal.get(Calendar.YEAR)) +"-"+
+                String.valueOf(cal.get(Calendar.MONTH) + 1) +"-" +
+                String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+        if(sp != null && sp.getString("dateLastOpen","1970-01-01").equals(today)) {
+            //read from database
+            helloWorldDbHelper dbHelper = new helloWorldDbHelper(this);
+            List<RateDbVal> rate = (List<RateDbVal>) dbHelper.selectAll(helloWorldDbHelper.TB_RATE);
+            listItems = new ArrayList<HashMap<String, String>>();
+            for(RateDbVal r : rate) {
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put("ItemTitle", r.getName()); // 标题文字
+                map.put("ItemDetail", r.getRating()); // 详情描述
+                listItems.add(map);
+            }
+        } else {
+            editor.putString("dateLastOpen", today);
+            Thread thread = new Thread(et,"exchangelist");
+            thread.start();
+        }
         createAdapter();
         this.getListView().setOnItemLongClickListener(olclistener);
     }
@@ -85,6 +115,8 @@ public class exchangeList extends ListActivity  {
         @Override
         public void run() {
             Document doc = null;
+            helloWorldDbHelper dbHelper = new helloWorldDbHelper(exchangeList.this);
+            RateDbVal val = new RateDbVal();
             try {
                 doc = Jsoup.connect("http://www.boc.cn/sourcedb/whpj/enindex.html").get();
                 Elements tables = doc.getElementsByTag("table");
@@ -100,6 +132,9 @@ public class exchangeList extends ListActivity  {
                         HashMap<String, String> map = new HashMap<String, String>();
                         map.put("ItemTitle", tr.child(0).text()); // 标题文字
                         map.put("ItemDetail", tr.child(5).text()); // 详情描述
+                        val.setName(map.get("ItemTitle"));
+                        val.setRating(map.get("ItemDetail"));
+                        dbHelper.insert(helloWorldDbHelper.TB_RATE, val);
                         listItems.add(map);
                     }
                 }
@@ -123,7 +158,4 @@ public class exchangeList extends ListActivity  {
         startActivity(intent);
     }
 }
-
-
-
 
